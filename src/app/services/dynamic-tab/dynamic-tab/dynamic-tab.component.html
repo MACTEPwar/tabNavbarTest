@@ -1,0 +1,25 @@
+<div id="tab-container">
+  <div id="tab-header">
+    <!-- (click)="clickTab(tab, ind)" -->
+    <div
+      (click)="linkToTab(tab.id)"
+      class="tab-header-card"
+      [ngClass]="{ active: tab.isActive }"
+      *ngFor="let tab of tabs | async; index as ind"
+    >
+      <span class="icon"></span>
+      <span class="text">{{ tab.title }}</span>
+      <!-- (click)="closeTab(ind)" -->
+      <div class="close" *ngIf="tab.isClosable" (click)="$event.stopPropagation();close(tab.id)">
+        &times;
+      </div>
+    </div>
+  </div>
+  <div id="tab-content">
+    <ng-container #contentContainer> </ng-container>
+  </div>
+</div>
+
+<div style="position: absolute; top: 0; left: 0; width: 43px; height: 22px">
+  <button (click)="test()">TEST</button>
+</div>
